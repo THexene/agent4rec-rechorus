@@ -47,7 +47,7 @@ Agent4Rec-ReChorus
    ```
    (3)（可选）安装ReChorus依赖：  
 由于两个项目的部分包版本不同，因此还是如果需要重新训练模型，还是建议为ReChorus重新创建一个conda环境，并安装ReChorus的依赖。  
-但是如果不需要重新训练模型，可以跳过此步骤，直接使用rechorus_convert_model.ipynb转换模型然后使用Agent4Rec进行评测。
+但是如果不需要重新训练模型，可以跳过此步骤，直接使用`rechorus_convert_model.ipynb`转换模型然后使用Agent4Rec进行评测。
    ```bash
    cd ../ReChorus
    pip install -r requirements.txt
@@ -68,19 +68,20 @@ Agent4Rec-ReChorus
 
 ### 快速开始
 
-1. （可选）训练ReChorus模型：  
-   以LightGCN模型为例，使用以下命令进行训练；其他模型的训练命令可以在ReChorus/src/test_topk_ML1M.sh找到。
+1. （可选）训练ReChorus模型：
+   首先，需要进入`ReChorus/data/MovieLens_1M运行MovieLens-1M.ipynb`处理数据集。  
+   以LightGCN模型为例，使用以下命令进行训练；其他模型的训练命令可以在`ReChorus/src/test_topk_ML1M.sh`找到。
    ```bash
    cd ReChorus/src
    python main.py --model_name LightGCN --emb_size 64 --n_layers 3 --lr 1e-3 --l2 1e-8 --dataset MovieLens_1M/ML_1MTOPK/ --path ../data
    ```
-   如果需要使用Movielens-10M数据集，请使用ReChorus/src/test_topk_ML10M.sh内的命令进行训练。
+   如果需要使用Movielens-10M数据集，请使用`ReChorus/src/test_topk_ML10M.sh`内的命令进行训练。
 
 2. 转换ReChorus模型：
-   打开rechorus_convert_model.ipynb，修改相关参数，并运行。
+   打开`rechorus_convert_model.ipynb`，修改相关参数，并运行。
 
 3. 使用Agent4Rec进行评测：  
-   以LightGCN模型为例，使用以下命令进行评测；其他模型的评测命令可以在Agent4Rec/test.sh找到。
+   以LightGCN模型为例，使用以下命令进行评测；其他模型的评测命令可以在`Agent4Rec/test.sh`找到。
    ```bash
    cd Agent4Rec
    python main.py --simulation_name ReChorus --n_avatars 10 --max_pages 5 --items_per_page 4 --model_path converted_models/
@@ -90,6 +91,7 @@ Agent4Rec-ReChorus
 
 - `ReChorus/`: 包含ReChorus的源代码和相关文档。
 - `Agent4Rec/`: 包含Agent4Rec的源代码和相关文档。
+- `rechorus_convert_model.ipynb`：用于将ReChorus模型转换为Agent4Rec可用的格式。
 
 ## 贡献
 
