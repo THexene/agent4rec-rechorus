@@ -31,8 +31,8 @@ Agent4Rec-ReChorus
 1. 克隆本仓库：
 
    ```bash
-   git clone https://github.com/YourUsername/YourProject.git
-   cd YourProject
+   git clone https://github.com/THexene/agent4rec-rechorus.git
+   cd agent4rec-rechorus
    ```
 
 2. 安装依赖：  
