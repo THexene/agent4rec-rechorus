@@ -69,7 +69,7 @@ Agent4Rec-ReChorus
 ### 快速开始
 
 1. （可选）训练ReChorus模型：
-   首先，需要进入`ReChorus/data/MovieLens_1M运行MovieLens-1M.ipynb`处理数据集。  
+   首先，需要进入`ReChorus/data/MovieLens_1M`运行`MovieLens-1M.ipynb`处理数据集。  
    以LightGCN模型为例，使用以下命令进行训练；其他模型的训练命令可以在`ReChorus/src/test_topk_ML1M.sh`找到。
    ```bash
    cd ReChorus/src
