@@ -61,7 +61,7 @@ Agent4Rec-ReChorus
    ```
 
 4. 设置API Key：  
-   请进入目录Agent4Rec/simulation/.env，设置OPENAI_API_BASE和OPENAI_API_KEY以使用OpenAI API。
+   请进入目录`Agent4Rec/simulation/.env`，设置OPENAI_API_BASE和OPENAI_API_KEY以使用OpenAI API。
 
 
 ## 使用方法
