@@ -60,7 +60,7 @@ Agent4Rec-ReChorus
    python setup.py build_ext --inplace
    ```
 
-4. 设置API Key：
+4. 设置API Key：  
    请进入目录Agent4Rec/simulation/.env，设置OPENAI_API_BASE和OPENAI_API_KEY以使用OpenAI API。
 
 
@@ -68,7 +68,7 @@ Agent4Rec-ReChorus
 
 ### 快速开始
 
-1. （可选）训练ReChorus模型：
+1. （可选）训练ReChorus模型：  
    以LightGCN模型为例，使用以下命令进行训练；其他模型的训练命令可以在ReChorus/src/test_topk_ML1M.sh找到。
    ```bash
    cd ReChorus/src
@@ -79,7 +79,7 @@ Agent4Rec-ReChorus
 2. 转换ReChorus模型：
    打开rechorus_convert_model.ipynb，修改相关参数，并运行。
 
-3. 使用Agent4Rec进行评测：
+3. 使用Agent4Rec进行评测：  
    以LightGCN模型为例，使用以下命令进行评测；其他模型的评测命令可以在Agent4Rec/test.sh找到。
    ```bash
    cd Agent4Rec
