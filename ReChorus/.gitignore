@@ -1,0 +1,15 @@
+.ipynb_checkpoints/
+*.xlsx
+.idea/
+__pycache__/
+.DS_Store
+*.pyc
+figure/
+doc/
+# model/
+search.py
+
+data/MovieLens_1M/ML_1MCTR/
+data/MovieLens_1M/ML_1MTOPK/
+data/MovieLens_10M/ML_10MCTR/
+data/MovieLens_10M/ML_10MTOPK/

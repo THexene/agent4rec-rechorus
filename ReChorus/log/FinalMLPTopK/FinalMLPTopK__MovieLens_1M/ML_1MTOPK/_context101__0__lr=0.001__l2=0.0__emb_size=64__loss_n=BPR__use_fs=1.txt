@@ -1,0 +1,158 @@
+INFO:root:Namespace(model_name='FinalMLP', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-24 18:12:46 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0                   
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ fs1_context                | c_hour_c,c_weekda...
+ fs2_context                | i_genre_c,i_title_c 
+ fs_hidden_units            | [64]                
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ l2                         | 0.0                 
+ loss_n                     | BPR                 
+ lr                         | 0.001               
+ main_metric                |                     
+ mlp1_batch_norm            | 0                   
+ mlp1_dropout               | 0.5                 
+ mlp1_hidden_activations    | ReLU                
+ mlp1_hidden_units          | [64]                
+ mlp2_batch_norm            | 0                   
+ mlp2_dropout               | 0.2                 
+ mlp2_hidden_activations    | ReLU                
+ mlp2_hidden_units          | [64,64,64]          
+ num_heads                  | 1                   
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+ use_fs                     | 1                   
+===================================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 1199234
+INFO:root:FinalMLPTopK(
+  (embedding_dict): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (mlp1): MLP_Block(
+    (mlp): Sequential(
+      (0): Linear(in_features=512, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Dropout(p=0.5, inplace=False)
+    )
+  )
+  (mlp2): MLP_Block(
+    (mlp): Sequential(
+      (0): Linear(in_features=512, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Dropout(p=0.2, inplace=False)
+      (3): Linear(in_features=64, out_features=64, bias=True)
+      (4): ReLU()
+      (5): Dropout(p=0.2, inplace=False)
+      (6): Linear(in_features=64, out_features=64, bias=True)
+      (7): ReLU()
+      (8): Dropout(p=0.2, inplace=False)
+    )
+  )
+  (fs_module): FeatureSelection(
+    (fs1_ctx_emb): ModuleList(
+      (0): Embedding(24, 64)
+      (1): Embedding(7, 64)
+      (2): Embedding(9, 64)
+      (3): Linear(in_features=1, out_features=64, bias=True)
+    )
+    (fs2_ctx_emb): ModuleList(
+      (0): Embedding(298, 64)
+      (1): Embedding(3126, 64)
+    )
+    (fs1_gate): MLP_Block(
+      (mlp): Sequential(
+        (0): Linear(in_features=256, out_features=64, bias=True)
+        (1): ReLU()
+        (2): Linear(in_features=64, out_features=512, bias=True)
+        (3): Sigmoid()
+      )
+    )
+    (fs2_gate): MLP_Block(
+      (mlp): Sequential(
+        (0): Linear(in_features=128, out_features=64, bias=True)
+        (1): ReLU()
+        (2): Linear(in_features=64, out_features=512, bias=True)
+        (3): Sigmoid()
+      )
+    )
+  )
+  (fusion_module): InteractionAggregation(
+    (w_x): Linear(in_features=64, out_features=1, bias=True)
+    (w_y): Linear(in_features=64, out_features=1, bias=True)
+  )
+)
+INFO:root:Test Before Training: (HR@3:0.0285,NDCG@3:0.0200,HR@5:0.0494,NDCG@5:0.0285,HR@10:0.1058,NDCG@10:0.0465,HR@20:0.2143,NDCG@20:0.0736)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.3628 [21.4 s]	dev=(HR@3:0.2443,NDCG@3:0.1874) [0.1 s] *
+INFO:root:Epoch 2     loss=0.3421 [23.2 s]	dev=(HR@3:0.2451,NDCG@3:0.1868) [0.1 s]
+INFO:root:Epoch 3     loss=0.3388 [22.9 s]	dev=(HR@3:0.2475,NDCG@3:0.1919) [0.2 s] *
+INFO:root:Epoch 4     loss=0.3346 [22.1 s]	dev=(HR@3:0.2482,NDCG@3:0.1911) [0.1 s]
+INFO:root:Epoch 5     loss=0.3314 [20.9 s]	dev=(HR@3:0.2568,NDCG@3:0.1971) [0.2 s] *
+INFO:root:Epoch 6     loss=0.3240 [20.2 s]	dev=(HR@3:0.2541,NDCG@3:0.1930) [0.1 s]
+INFO:root:Epoch 7     loss=0.3089 [22.1 s]	dev=(HR@3:0.2568,NDCG@3:0.1991) [0.2 s] *
+INFO:root:Epoch 8     loss=0.2841 [23.4 s]	dev=(HR@3:0.2650,NDCG@3:0.2015) [0.1 s] *
+INFO:root:Epoch 9     loss=0.2651 [21.1 s]	dev=(HR@3:0.2732,NDCG@3:0.2077) [0.2 s] *
+INFO:root:Epoch 10    loss=0.2553 [21.1 s]	dev=(HR@3:0.2627,NDCG@3:0.2013) [0.2 s]
+INFO:root:Epoch 11    loss=0.2441 [20.3 s]	dev=(HR@3:0.2685,NDCG@3:0.2057) [0.1 s]
+INFO:root:Epoch 12    loss=0.2396 [19.9 s]	dev=(HR@3:0.2658,NDCG@3:0.2037) [0.1 s]
+INFO:root:Epoch 13    loss=0.2332 [23.3 s]	dev=(HR@3:0.2732,NDCG@3:0.2103) [0.2 s] *
+INFO:root:Epoch 14    loss=0.2286 [23.0 s]	dev=(HR@3:0.2783,NDCG@3:0.2170) [0.2 s] *
+INFO:root:Epoch 15    loss=0.2251 [22.3 s]	dev=(HR@3:0.2849,NDCG@3:0.2160) [0.1 s]
+INFO:root:Epoch 16    loss=0.2218 [21.3 s]	dev=(HR@3:0.2681,NDCG@3:0.2063) [0.1 s]
+INFO:root:Epoch 17    loss=0.2189 [20.3 s]	dev=(HR@3:0.2845,NDCG@3:0.2188) [0.1 s] *
+INFO:root:Epoch 18    loss=0.2162 [22.2 s]	dev=(HR@3:0.2802,NDCG@3:0.2170) [0.2 s]
+INFO:root:Epoch 19    loss=0.2136 [23.6 s]	dev=(HR@3:0.2873,NDCG@3:0.2215) [0.1 s] *
+INFO:root:Epoch 20    loss=0.2098 [21.3 s]	dev=(HR@3:0.2853,NDCG@3:0.2183) [0.1 s]
+INFO:root:Epoch 21    loss=0.2101 [23.2 s]	dev=(HR@3:0.2884,NDCG@3:0.2230) [0.2 s] *
+INFO:root:Epoch 22    loss=0.2047 [23.3 s]	dev=(HR@3:0.2931,NDCG@3:0.2267) [0.2 s] *
+INFO:root:Epoch 23    loss=0.2036 [23.6 s]	dev=(HR@3:0.2994,NDCG@3:0.2323) [0.2 s] *
+INFO:root:Epoch 24    loss=0.2014 [22.6 s]	dev=(HR@3:0.2849,NDCG@3:0.2195) [0.2 s]
+INFO:root:Epoch 25    loss=0.1993 [22.9 s]	dev=(HR@3:0.2830,NDCG@3:0.2162) [0.1 s]
+INFO:root:Epoch 26    loss=0.1969 [21.5 s]	dev=(HR@3:0.2904,NDCG@3:0.2233) [0.1 s]
+INFO:root:Epoch 27    loss=0.1961 [21.8 s]	dev=(HR@3:0.2877,NDCG@3:0.2180) [0.2 s]
+INFO:root:Epoch 28    loss=0.1937 [20.5 s]	dev=(HR@3:0.2877,NDCG@3:0.2187) [0.1 s]
+INFO:root:Epoch 29    loss=0.1929 [23.5 s]	dev=(HR@3:0.3013,NDCG@3:0.2318) [0.2 s]
+INFO:root:Epoch 30    loss=0.1898 [22.7 s]	dev=(HR@3:0.2923,NDCG@3:0.2242) [0.2 s]
+INFO:root:Epoch 31    loss=0.1887 [21.9 s]	dev=(HR@3:0.2830,NDCG@3:0.2155) [0.2 s]
+INFO:root:Epoch 32    loss=0.1883 [23.3 s]	dev=(HR@3:0.2873,NDCG@3:0.2199) [0.2 s]
+INFO:root:Early stop at 32 based on dev result.
+INFO:root:
+Best Iter(dev)=   23	 dev=(HR@3:0.2994,NDCG@3:0.2323) [711.6 s] 
+INFO:root:Load model from ../model/FinalMLPTopK/FinalMLPTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0__emb_size=64__loss_n=BPR__use_fs=1.pt
+INFO:root:
+Dev  After Training: (HR@3:0.2994,NDCG@3:0.2323,HR@5:0.4083,NDCG@5:0.2771,HR@10:0.5742,NDCG@10:0.3306,HR@20:0.7623,NDCG@20:0.3782)
+INFO:root:
+Test After Training: (HR@3:0.2940,NDCG@3:0.2276,HR@5:0.3998,NDCG@5:0.2709,HR@10:0.5678,NDCG@10:0.3251,HR@20:0.7484,NDCG@20:0.3708)
+INFO:root:Saving top-100 recommendation results to: ../log/FinalMLPTopK/FinalMLPTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-FinalMLPTopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/FinalMLPTopK/FinalMLPTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-FinalMLPTopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-24 18:24:41 ---------------------------------------------

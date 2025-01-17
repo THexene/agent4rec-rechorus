@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# IDE
+.idea/
+.vscode/
+.spyderproject
+.spyproject
+.ropeproject
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Documentation
+docs/_build/
+doc/
+/site
+
+# Logs and databases
+*.log
+logs/
+db.sqlite3
+db.sqlite3-journal
+*.xlsx
+
+# OS generated files
+.DS_Store
+
+# Project specific
+figure/
+wandb/
+recommenders/wandb/
+data/MovieLens_1M/ML_1MCTR/
+data/MovieLens_1M/ML_1MTOPK/
+data/MovieLens_10M/ML_10MCTR/
+data/MovieLens_10M/ML_10MTOPK/
+
+# Temporary files
+*.out

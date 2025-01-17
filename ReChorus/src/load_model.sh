@@ -1,0 +1,5 @@
+python load_model.py --model_path ../model/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0001__emb_size=64__loss_n=BPR__interaction_type=SAM3A__aggregation=mean_pooling.pt --dataset MovieLens_1M/ML_1MTOPK/ --path ../data/ --model_name SAM --model_mode TopK
+
+python load_model.py --model_path ../model/AFMTopK/AFMTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.005__l2=0.0__emb_size=64__attention_size=64__loss_n=BPR.pt --dataset MovieLens_1M/ML_1MTOPK/ --path ../data/ --model_name AFM --model_mode TopK
+
+python load_model.py --model_name AFM --model_mode TopK --model_path ../model/AFMTopK/AFMTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.005__l2=0.0__emb_size=64__attention_size=64__loss_n=BPR.pt --output_path ../converted_model/AFM_ML1M.pt --dataset MovieLens_1M/ML_1MTOPK/ --data_appendix _context101

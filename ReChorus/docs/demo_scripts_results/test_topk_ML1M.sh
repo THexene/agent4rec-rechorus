@@ -1,0 +1,3 @@
+python main.py --model_name xDeepFM --lr 5e-4 --l2 0 --dropout 0.8 --layers "[512,512,512]" --cin_layers "[8,8]" --direct 0 --reg_weight 1.0 --dataset MovieLens_1M/ML_1MTOPK/ --path ../data/ --num_neg 1 --batch_size 256 --eval_batch_size 128 --metric NDCG,HR --topk 3,5,10,20 --include_item_features 1 --include_situation_features 1 --model_mode TopK
+
+python main.py --model_name LightGCN --emb_size 64 --n_layers 3 --lr 1e-3 --l2 1e-8 --dataset MovieLens_1M/ML_1MTOPK/ --path ../data

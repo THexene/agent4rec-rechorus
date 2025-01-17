@@ -1,0 +1,10 @@
+Start: 2025-01-17 20:56:16. User 0 starts simulation.
+Start: 2025-01-17 20:56:16. User 4 starts simulation.
+Start: 2025-01-17 20:56:16. User 8 starts simulation.
+Start: 2025-01-17 20:56:16. User 1 starts simulation.
+Start: 2025-01-17 20:56:16. User 5 starts simulation.
+Start: 2025-01-17 20:56:16. User 7 starts simulation.
+Start: 2025-01-17 20:56:16. User 2 starts simulation.
+Start: 2025-01-17 20:56:16. User 6 starts simulation.
+Start: 2025-01-17 20:56:16. User 9 starts simulation.
+Start: 2025-01-17 20:56:16. User 3 starts simulation.

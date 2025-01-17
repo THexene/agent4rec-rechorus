@@ -1,0 +1,46 @@
+INFO:root:Namespace(model_name='LightGCN', model_mode='')
+INFO:root:--------------------------------------------- BEGIN: 2025-01-17 18:29:04 ---------------------------------------------
+INFO:root:
+===========================================
+ Arguments          | Values               
+===========================================
+ batch_size         | 256                 
+ data_appendix      |                     
+ dataset            | MovieLens_10M/ML_...
+ dropout            | 0                   
+ early_stop         | 10                  
+ emb_size           | 64                  
+ epoch              | 200                 
+ eval_batch_size    | 256                 
+ gpu                | 0                   
+ l2                 | 1e-08               
+ lr                 | 0.001               
+ main_metric        |                     
+ n_layers           | 3                   
+ num_neg            | 1                   
+ num_workers        | 0                   
+ optimizer          | Adam                
+ random_seed        | 0                   
+ save_final_results | 1                   
+ test_all           | 0                   
+ topk               | 5,10,20,50          
+===========================================
+INFO:root:Device: cuda
+INFO:root:Reading data from "../data", dataset = "MovieLens_10M/ML_10MTOPK/" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 58667, "# item": 7698, "# entry": 4150664
+INFO:root:Save corpus to ../data\MovieLens_10M/ML_10MTOPK/BaseReader.pkl
+INFO:root:#params: 4247488
+INFO:root:LightGCN(
+  (encoder): LGCNEncoder(
+    (embedding_dict): ParameterDict(
+        (item_emb): Parameter containing: [torch.cuda.FloatTensor of size 7699x64 (cuda:0)]
+        (user_emb): Parameter containing: [torch.cuda.FloatTensor of size 58668x64 (cuda:0)]
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@5:0.0507,NDCG@5:0.0298,HR@10:0.1006,NDCG@10:0.0458,HR@20:0.2040,NDCG@20:0.0715,HR@50:0.5013,NDCG@50:0.1296)
+INFO:root:Optimizer: Adam
+INFO:root:Early stop manually
+INFO:root:
+--------------------------------------------- END: 2025-01-17 19:42:09 ---------------------------------------------

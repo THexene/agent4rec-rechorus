@@ -1,0 +1,121 @@
+INFO:root:Namespace(model_name='WideDeep', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-24 16:43:58 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0.5                 
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ l2                         | 0.0                 
+ layers                     | [64,64,64]          
+ loss_n                     | BPR                 
+ lr                         | 0.001               
+ main_metric                |                     
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+===================================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 861778
+INFO:root:WideDeepTopK(
+  (context_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (linear_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 1)
+    (i_title_c): Embedding(3126, 1)
+    (c_day_f): Linear(in_features=1, out_features=1, bias=False)
+    (c_hour_c): Embedding(24, 1)
+    (c_period_c): Embedding(9, 1)
+    (c_weekday_c): Embedding(7, 1)
+    (user_id): Embedding(6033, 1)
+    (item_id): Embedding(3126, 1)
+  )
+  (deep_layers): MLP_Block(
+    (mlp): Sequential(
+      (0): Linear(in_features=512, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Dropout(p=0.5, inplace=False)
+      (3): Linear(in_features=64, out_features=64, bias=True)
+      (4): ReLU()
+      (5): Dropout(p=0.5, inplace=False)
+      (6): Linear(in_features=64, out_features=64, bias=True)
+      (7): ReLU()
+      (8): Dropout(p=0.5, inplace=False)
+      (9): Linear(in_features=64, out_features=1, bias=True)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@3:0.0275,NDCG@3:0.0199,HR@5:0.0480,NDCG@5:0.0283,HR@10:0.0971,NDCG@10:0.0437,HR@20:0.2053,NDCG@20:0.0708)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.3795 [25.1 s]	dev=(HR@3:0.2440,NDCG@3:0.1889) [0.2 s] *
+INFO:root:Epoch 2     loss=0.3493 [23.9 s]	dev=(HR@3:0.2514,NDCG@3:0.1892) [0.1 s] *
+INFO:root:Epoch 3     loss=0.3459 [21.0 s]	dev=(HR@3:0.2471,NDCG@3:0.1889) [0.2 s]
+INFO:root:Epoch 4     loss=0.3420 [23.5 s]	dev=(HR@3:0.2525,NDCG@3:0.1920) [0.2 s] *
+INFO:root:Epoch 5     loss=0.3404 [24.7 s]	dev=(HR@3:0.2537,NDCG@3:0.1933) [0.2 s] *
+INFO:root:Epoch 6     loss=0.3386 [22.4 s]	dev=(HR@3:0.2545,NDCG@3:0.1916) [0.1 s]
+INFO:root:Epoch 7     loss=0.3368 [21.7 s]	dev=(HR@3:0.2506,NDCG@3:0.1913) [0.1 s]
+INFO:root:Epoch 8     loss=0.3347 [21.5 s]	dev=(HR@3:0.2533,NDCG@3:0.1946) [0.1 s] *
+INFO:root:Epoch 9     loss=0.3323 [23.0 s]	dev=(HR@3:0.2498,NDCG@3:0.1909) [0.2 s]
+INFO:root:Epoch 10    loss=0.3294 [22.4 s]	dev=(HR@3:0.2479,NDCG@3:0.1911) [0.1 s]
+INFO:root:Epoch 11    loss=0.3225 [21.5 s]	dev=(HR@3:0.2560,NDCG@3:0.1936) [0.1 s]
+INFO:root:Epoch 12    loss=0.3172 [23.7 s]	dev=(HR@3:0.2553,NDCG@3:0.1953) [0.2 s] *
+INFO:root:Epoch 13    loss=0.3068 [23.0 s]	dev=(HR@3:0.2537,NDCG@3:0.1956) [0.1 s] *
+INFO:root:Epoch 14    loss=0.2954 [23.2 s]	dev=(HR@3:0.2584,NDCG@3:0.1981) [0.1 s] *
+INFO:root:Epoch 15    loss=0.2891 [23.2 s]	dev=(HR@3:0.2564,NDCG@3:0.1971) [0.1 s]
+INFO:root:Epoch 16    loss=0.2849 [23.1 s]	dev=(HR@3:0.2639,NDCG@3:0.2025) [0.1 s] *
+INFO:root:Epoch 17    loss=0.2809 [22.6 s]	dev=(HR@3:0.2642,NDCG@3:0.2022) [0.1 s]
+INFO:root:Epoch 18    loss=0.2794 [20.6 s]	dev=(HR@3:0.2603,NDCG@3:0.1983) [0.1 s]
+INFO:root:Epoch 19    loss=0.2774 [21.0 s]	dev=(HR@3:0.2615,NDCG@3:0.2003) [0.1 s]
+INFO:root:Epoch 20    loss=0.2735 [23.5 s]	dev=(HR@3:0.2693,NDCG@3:0.2035) [0.2 s] *
+INFO:root:Epoch 21    loss=0.2722 [23.4 s]	dev=(HR@3:0.2740,NDCG@3:0.2075) [0.2 s] *
+INFO:root:Epoch 22    loss=0.2702 [24.3 s]	dev=(HR@3:0.2732,NDCG@3:0.2069) [0.2 s]
+INFO:root:Epoch 23    loss=0.2695 [25.3 s]	dev=(HR@3:0.2709,NDCG@3:0.2055) [0.1 s]
+INFO:root:Epoch 24    loss=0.2673 [24.4 s]	dev=(HR@3:0.2732,NDCG@3:0.2086) [0.2 s] *
+INFO:root:Epoch 25    loss=0.2661 [24.1 s]	dev=(HR@3:0.2732,NDCG@3:0.2065) [0.1 s]
+INFO:root:Epoch 26    loss=0.2645 [23.7 s]	dev=(HR@3:0.2775,NDCG@3:0.2115) [0.2 s] *
+INFO:root:Epoch 27    loss=0.2619 [25.1 s]	dev=(HR@3:0.2709,NDCG@3:0.2064) [0.2 s]
+INFO:root:Epoch 28    loss=0.2611 [25.1 s]	dev=(HR@3:0.2646,NDCG@3:0.2048) [0.1 s]
+INFO:root:Epoch 29    loss=0.2605 [25.4 s]	dev=(HR@3:0.2748,NDCG@3:0.2085) [0.2 s]
+INFO:root:Epoch 30    loss=0.2578 [24.9 s]	dev=(HR@3:0.2713,NDCG@3:0.2077) [0.1 s]
+INFO:root:Epoch 31    loss=0.2569 [24.9 s]	dev=(HR@3:0.2740,NDCG@3:0.2095) [0.1 s]
+INFO:root:Epoch 32    loss=0.2554 [24.4 s]	dev=(HR@3:0.2689,NDCG@3:0.2042) [0.1 s]
+INFO:root:Epoch 33    loss=0.2549 [22.1 s]	dev=(HR@3:0.2732,NDCG@3:0.2076) [0.1 s]
+INFO:root:Epoch 34    loss=0.2531 [25.0 s]	dev=(HR@3:0.2666,NDCG@3:0.2019) [0.1 s]
+INFO:root:Epoch 35    loss=0.2508 [22.9 s]	dev=(HR@3:0.2760,NDCG@3:0.2065) [0.1 s]
+INFO:root:Early stop at 35 based on dev result.
+INFO:root:
+Best Iter(dev)=   26	 dev=(HR@3:0.2775,NDCG@3:0.2115) [824.6 s] 
+INFO:root:Load model from ../model/WideDeepTopK/WideDeepTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0__emb_size=64__layers=[64,64,64]__loss_n=BPR.pt
+INFO:root:
+Dev  After Training: (HR@3:0.2775,NDCG@3:0.2115,HR@5:0.3821,NDCG@5:0.2545,HR@10:0.5515,NDCG@10:0.3092,HR@20:0.7393,NDCG@20:0.3564)
+INFO:root:
+Test After Training: (HR@3:0.2700,NDCG@3:0.2078,HR@5:0.3601,NDCG@5:0.2448,HR@10:0.5278,NDCG@10:0.2987,HR@20:0.7192,NDCG@20:0.3471)
+INFO:root:Saving top-100 recommendation results to: ../log/WideDeepTopK/WideDeepTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-WideDeepTopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/WideDeepTopK/WideDeepTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-WideDeepTopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-24 16:57:44 ---------------------------------------------

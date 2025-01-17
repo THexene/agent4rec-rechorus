@@ -1,0 +1,175 @@
+INFO:root:Namespace(model_name='SAM', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-24 18:24:44 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ aggregation                | mean_pooling        
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0.2                 
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ interaction_type           | SAM3A               
+ l2                         | 0.0001              
+ loss_n                     | BPR                 
+ lr                         | 0.001               
+ main_metric                |                     
+ num_layers                 | 1                   
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+ use_residual               | 1                   
+===================================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 820289
+INFO:root:SAMTopK(
+  (block): SAMBlock(
+    (layers): ModuleList(
+      (0): SAM3A(
+        (K): Linear(in_features=64, out_features=64, bias=False)
+        (Q): Linear(in_features=64, out_features=64, bias=False)
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+    )
+  )
+  (embedding_dict): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (output_layer): Linear(in_features=64, out_features=1, bias=True)
+)
+INFO:root:Test Before Training: (HR@3:0.0407,NDCG@3:0.0293,HR@5:0.0651,NDCG@5:0.0392,HR@10:0.1103,NDCG@10:0.0534,HR@20:0.2258,NDCG@20:0.0825)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.4039 [15.2 s]	dev=(HR@3:0.2350,NDCG@3:0.1811) [0.1 s] *
+INFO:root:Epoch 2     loss=0.3443 [15.7 s]	dev=(HR@3:0.2479,NDCG@3:0.1889) [0.2 s] *
+INFO:root:Epoch 3     loss=0.3416 [16.7 s]	dev=(HR@3:0.2459,NDCG@3:0.1866) [0.1 s]
+INFO:root:Epoch 4     loss=0.3312 [16.8 s]	dev=(HR@3:0.2479,NDCG@3:0.1909) [0.2 s] *
+INFO:root:Epoch 5     loss=0.3009 [16.5 s]	dev=(HR@3:0.2525,NDCG@3:0.1917) [0.1 s] *
+INFO:root:Epoch 6     loss=0.2935 [16.4 s]	dev=(HR@3:0.2568,NDCG@3:0.1960) [0.1 s] *
+INFO:root:Epoch 7     loss=0.2918 [16.2 s]	dev=(HR@3:0.2623,NDCG@3:0.1972) [0.1 s] *
+INFO:root:Epoch 8     loss=0.2905 [15.1 s]	dev=(HR@3:0.2412,NDCG@3:0.1849) [0.1 s]
+INFO:root:Epoch 9     loss=0.2847 [15.2 s]	dev=(HR@3:0.2518,NDCG@3:0.1945) [0.1 s]
+INFO:root:Epoch 10    loss=0.2734 [17.4 s]	dev=(HR@3:0.2619,NDCG@3:0.2013) [0.2 s] *
+INFO:root:Epoch 11    loss=0.2635 [16.8 s]	dev=(HR@3:0.2654,NDCG@3:0.2018) [0.1 s] *
+INFO:root:Epoch 12    loss=0.2541 [16.2 s]	dev=(HR@3:0.2822,NDCG@3:0.2174) [0.1 s] *
+INFO:root:Epoch 13    loss=0.2453 [16.5 s]	dev=(HR@3:0.2779,NDCG@3:0.2141) [0.1 s]
+INFO:root:Epoch 14    loss=0.2347 [17.1 s]	dev=(HR@3:0.2709,NDCG@3:0.2108) [0.2 s]
+INFO:root:Epoch 15    loss=0.2294 [16.9 s]	dev=(HR@3:0.2666,NDCG@3:0.2034) [0.1 s]
+INFO:root:Epoch 16    loss=0.2258 [15.0 s]	dev=(HR@3:0.2830,NDCG@3:0.2188) [0.1 s] *
+INFO:root:Epoch 17    loss=0.2230 [16.6 s]	dev=(HR@3:0.2845,NDCG@3:0.2174) [0.2 s]
+INFO:root:Epoch 18    loss=0.2203 [17.0 s]	dev=(HR@3:0.2787,NDCG@3:0.2132) [0.2 s]
+INFO:root:Epoch 19    loss=0.2178 [16.5 s]	dev=(HR@3:0.2822,NDCG@3:0.2176) [0.1 s]
+INFO:root:Epoch 20    loss=0.2148 [16.6 s]	dev=(HR@3:0.2927,NDCG@3:0.2216) [0.2 s] *
+INFO:root:Epoch 21    loss=0.2122 [16.4 s]	dev=(HR@3:0.2736,NDCG@3:0.2105) [0.2 s]
+INFO:root:Epoch 22    loss=0.2094 [15.7 s]	dev=(HR@3:0.2799,NDCG@3:0.2106) [0.1 s]
+INFO:root:Epoch 23    loss=0.2086 [15.3 s]	dev=(HR@3:0.2845,NDCG@3:0.2210) [0.1 s]
+INFO:root:Epoch 24    loss=0.2068 [16.3 s]	dev=(HR@3:0.2853,NDCG@3:0.2175) [0.2 s]
+INFO:root:Epoch 25    loss=0.2058 [17.4 s]	dev=(HR@3:0.2830,NDCG@3:0.2175) [0.2 s]
+INFO:root:Epoch 26    loss=0.2044 [16.3 s]	dev=(HR@3:0.2779,NDCG@3:0.2131) [0.2 s]
+INFO:root:Epoch 27    loss=0.2024 [16.3 s]	dev=(HR@3:0.2763,NDCG@3:0.2098) [0.1 s]
+INFO:root:Epoch 28    loss=0.2019 [16.8 s]	dev=(HR@3:0.2838,NDCG@3:0.2162) [0.2 s]
+INFO:root:Epoch 29    loss=0.2017 [16.6 s]	dev=(HR@3:0.2873,NDCG@3:0.2168) [0.1 s]
+INFO:root:Early stop at 29 based on dev result.
+INFO:root:
+Best Iter(dev)=   20	 dev=(HR@3:0.2927,NDCG@3:0.2216) [478.2 s] 
+INFO:root:Load model from ../model/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0001__emb_size=64__loss_n=BPR__interaction_type=SAM3A__aggregation=mean_pooling.pt
+INFO:root:
+Dev  After Training: (HR@3:0.2927,NDCG@3:0.2216,HR@5:0.3899,NDCG@5:0.2615,HR@10:0.5570,NDCG@10:0.3155,HR@20:0.7510,NDCG@20:0.3642)
+INFO:root:
+Test After Training: (HR@3:0.2704,NDCG@3:0.2097,HR@5:0.3727,NDCG@5:0.2517,HR@10:0.5445,NDCG@10:0.3071,HR@20:0.7397,NDCG@20:0.3565)
+INFO:root:Saving top-100 recommendation results to: ../log/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-SAMTopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-SAMTopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-24 18:32:45 ---------------------------------------------
+INFO:root:Namespace(model_name='SAM', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-24 20:47:25 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ aggregation                | mean_pooling        
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0.2                 
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ interaction_type           | SAM3A               
+ l2                         | 0.0001              
+ loss_n                     | BPR                 
+ lr                         | 0.001               
+ main_metric                |                     
+ num_layers                 | 1                   
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+ use_residual               | 1                   
+===================================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 820289
+INFO:root:SAMTopK(
+  (block): SAMBlock(
+    (layers): ModuleList(
+      (0): SAM3A(
+        (K): Linear(in_features=64, out_features=64, bias=False)
+        (Q): Linear(in_features=64, out_features=64, bias=False)
+        (dropout): Dropout(p=0.2, inplace=False)
+      )
+    )
+  )
+  (embedding_dict): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (output_layer): Linear(in_features=64, out_features=1, bias=True)
+)
+INFO:root:Test Before Training: (HR@3:0.0407,NDCG@3:0.0293,HR@5:0.0651,NDCG@5:0.0392,HR@10:0.1103,NDCG@10:0.0534,HR@20:0.2258,NDCG@20:0.0825)
+INFO:root:Load model from ../model/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0001__emb_size=64__loss_n=BPR__interaction_type=SAM3A__aggregation=mean_pooling.pt
+INFO:root:
+Dev  After Training: (HR@3:0.2927,NDCG@3:0.2216,HR@5:0.3899,NDCG@5:0.2615,HR@10:0.5570,NDCG@10:0.3155,HR@20:0.7510,NDCG@20:0.3642)
+INFO:root:
+Test After Training: (HR@3:0.2704,NDCG@3:0.2097,HR@5:0.3727,NDCG@5:0.2517,HR@10:0.5445,NDCG@10:0.3071,HR@20:0.7397,NDCG@20:0.3565)
+INFO:root:Saving top-100 recommendation results to: ../log/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-SAMTopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/SAMTopK/SAMTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-SAMTopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-24 20:47:29 ---------------------------------------------

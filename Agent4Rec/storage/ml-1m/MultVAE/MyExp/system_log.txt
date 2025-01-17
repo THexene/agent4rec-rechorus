@@ -1,0 +1,30 @@
+Start: 2024-12-21 17:44:38. User 1 starts simulation.
+Start: 2024-12-21 17:44:38. User 5 starts simulation.
+Start: 2024-12-21 17:44:38. User 8 starts simulation.
+Start: 2024-12-21 17:44:38. User 2 starts simulation.
+Start: 2024-12-21 17:44:38. User 6 starts simulation.
+Start: 2024-12-21 17:44:38. User 9 starts simulation.
+Start: 2024-12-21 17:44:38. User 0 starts simulation.
+Start: 2024-12-21 17:44:38. User 3 starts simulation.
+Start: 2024-12-21 17:44:38. User 7 starts simulation.
+Start: 2024-12-21 17:44:38. User 4 starts simulation.
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:44:45. User 1 finished after 1 pages. [1 / 10]. Total token cost: 2.09k. Taking 7.14s
+Remaining users: 0, 2, 3, 4, 5, 6, 7, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:44:46. User 0 finished after 1 pages. [2 / 10]. Total token cost: 2.12k. Taking 8.44s
+Remaining users: 2, 3, 4, 5, 6, 7, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:44:54. User 5 finished after 2 pages. [3 / 10]. Total token cost: 4.18k. Taking 15.8s
+Remaining users: 2, 3, 4, 6, 7, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:44:55. User 2 finished after 2 pages. [4 / 10]. Total token cost: 4.26k. Taking 17.69s
+Remaining users: 3, 4, 6, 7, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:44:57. User 3 finished after 2 pages. [5 / 10]. Total token cost: 3.92k. Taking 19.44s
+Remaining users: 4, 6, 7, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:44:59. User 4 finished after 2 pages. [6 / 10]. Total token cost: 4.27k. Taking 21.58s
+Remaining users: 6, 7, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:45:02. User 7 finished after 2 pages. [7 / 10]. Total token cost: 4.19k. Taking 23.78s
+Remaining users: 6, 8, 9
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:45:03. User 9 finished after 2 pages. [8 / 10]. Total token cost: 4.19k. Taking 25.39s
+Remaining users: 6, 8
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:45:05. User 6 finished after 3 pages. [9 / 10]. Total token cost: 6.05k. Taking 27.05s
+Remaining users: 8
+Start: 2024-12-21 17:44:38 End: 2024-12-21 17:45:13. User 8 finished after 3 pages. [10 / 10]. Total token cost: 6.32k. Taking 34.7s
+Remaining users: 

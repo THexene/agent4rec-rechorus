@@ -1,0 +1,144 @@
+INFO:root:Namespace(model_name='FM', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-23 11:48:03 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0                   
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ l2                         | 0.0                 
+ loss_n                     | BPR                 
+ lr                         | 0.001               
+ main_metric                |                     
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+===================================================
+INFO:root:Device: cuda
+INFO:root:Reading data from "../data/", dataset = "MovieLens_1M/ML_1MTOPK/" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 6032, "# item": 3125, "# entry": 574197
+INFO:root:Collect context features...
+INFO:root:Loading context for train set...
+INFO:root:#Situation Feautures: 4
+INFO:root:Loading context for dev set...
+INFO:root:#Situation Feautures: 4
+INFO:root:Loading context for test set...
+INFO:root:#Situation Feautures: 4
+INFO:root:Namespace(model_name='FM', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-23 12:45:15 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0                   
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ l2                         | 0.0                 
+ loss_n                     | BPR                 
+ lr                         | 0.001               
+ main_metric                |                     
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+===================================================
+INFO:root:Device: cuda
+INFO:root:Reading data from "../data/", dataset = "MovieLens_1M/ML_1MTOPK/" 
+INFO:root:Counting dataset statistics...
+INFO:root:"# user": 6032, "# item": 3125, "# entry": 574197
+INFO:root:Collect context features...
+INFO:root:Loading context for train set...
+INFO:root:#Situation Feautures: 4
+INFO:root:Loading context for dev set...
+INFO:root:#Situation Feautures: 4
+INFO:root:Loading context for test set...
+INFO:root:#Situation Feautures: 4
+INFO:root:# Item Features: 3
+INFO:root:Save corpus to ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 820561
+INFO:root:FMTopK(
+  (context_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (linear_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 1)
+    (i_title_c): Embedding(3126, 1)
+    (c_day_f): Linear(in_features=1, out_features=1, bias=False)
+    (c_hour_c): Embedding(24, 1)
+    (c_period_c): Embedding(9, 1)
+    (c_weekday_c): Embedding(7, 1)
+    (user_id): Embedding(6033, 1)
+    (item_id): Embedding(3126, 1)
+  )
+)
+INFO:root:Test Before Training: (HR@3:0.0251,NDCG@3:0.0163,HR@5:0.0445,NDCG@5:0.0243,HR@10:0.0967,NDCG@10:0.0410,HR@20:0.2063,NDCG@20:0.0684)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.3747 [20.3 s]	dev=(HR@3:0.1534,NDCG@3:0.1144) [0.1 s] *
+INFO:root:Epoch 2     loss=0.3478 [16.9 s]	dev=(HR@3:0.2201,NDCG@3:0.1705) [0.1 s] *
+INFO:root:Epoch 3     loss=0.3413 [16.7 s]	dev=(HR@3:0.0906,NDCG@3:0.0659) [0.1 s]
+INFO:root:Epoch 4     loss=0.3325 [16.4 s]	dev=(HR@3:0.2022,NDCG@3:0.1527) [0.1 s]
+INFO:root:Epoch 5     loss=0.3167 [16.4 s]	dev=(HR@3:0.2521,NDCG@3:0.1913) [0.1 s] *
+INFO:root:Epoch 6     loss=0.2899 [16.5 s]	dev=(HR@3:0.2459,NDCG@3:0.1849) [0.1 s]
+INFO:root:Epoch 7     loss=0.2643 [17.0 s]	dev=(HR@3:0.1694,NDCG@3:0.1276) [0.1 s]
+INFO:root:Epoch 8     loss=0.2458 [18.1 s]	dev=(HR@3:0.2174,NDCG@3:0.1657) [0.1 s]
+INFO:root:Epoch 9     loss=0.2306 [16.3 s]	dev=(HR@3:0.2092,NDCG@3:0.1588) [0.1 s]
+INFO:root:Epoch 10    loss=0.2218 [16.2 s]	dev=(HR@3:0.0968,NDCG@3:0.0740) [0.1 s]
+INFO:root:Epoch 11    loss=0.2102 [16.8 s]	dev=(HR@3:0.1678,NDCG@3:0.1263) [0.1 s]
+INFO:root:Epoch 12    loss=0.2044 [17.0 s]	dev=(HR@3:0.2584,NDCG@3:0.1935) [0.1 s] *
+INFO:root:Epoch 13    loss=0.1966 [15.8 s]	dev=(HR@3:0.1546,NDCG@3:0.1176) [0.1 s]
+INFO:root:Epoch 14    loss=0.1894 [16.2 s]	dev=(HR@3:0.1167,NDCG@3:0.0855) [0.1 s]
+INFO:root:Epoch 15    loss=0.1855 [17.0 s]	dev=(HR@3:0.2049,NDCG@3:0.1566) [0.1 s]
+INFO:root:Epoch 16    loss=0.1796 [17.2 s]	dev=(HR@3:0.1850,NDCG@3:0.1418) [0.1 s]
+INFO:root:Epoch 17    loss=0.1756 [16.5 s]	dev=(HR@3:0.1081,NDCG@3:0.0796) [0.1 s]
+INFO:root:Epoch 18    loss=0.1709 [16.3 s]	dev=(HR@3:0.1635,NDCG@3:0.1220) [0.1 s]
+INFO:root:Epoch 19    loss=0.1686 [16.4 s]	dev=(HR@3:0.1514,NDCG@3:0.1094) [0.1 s]
+INFO:root:Epoch 20    loss=0.1640 [16.5 s]	dev=(HR@3:0.2451,NDCG@3:0.1859) [0.1 s]
+INFO:root:Epoch 21    loss=0.1620 [16.3 s]	dev=(HR@3:0.2088,NDCG@3:0.1571) [0.1 s]
+INFO:root:Early stop at 21 based on dev result.
+INFO:root:
+Best Iter(dev)=   12	 dev=(HR@3:0.2584,NDCG@3:0.1935) [354.2 s] 
+INFO:root:Load model from ../model/FMTopK/FMTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0__emb_size=64__loss_n=BPR.pt
+INFO:root:
+Dev  After Training: (HR@3:0.2584,NDCG@3:0.1935,HR@5:0.3509,NDCG@5:0.2315,HR@10:0.5180,NDCG@10:0.2853,HR@20:0.7057,NDCG@20:0.3328)
+INFO:root:
+Test After Training: (HR@3:0.2373,NDCG@3:0.1816,HR@5:0.3295,NDCG@5:0.2194,HR@10:0.5031,NDCG@10:0.2753,HR@20:0.7015,NDCG@20:0.3253)
+INFO:root:Saving top-100 recommendation results to: ../log/FMTopK/FMTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-FMTopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/FMTopK/FMTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-FMTopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-23 12:51:12 ---------------------------------------------

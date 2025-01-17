@@ -1,0 +1,52 @@
+{
+  "vis": -1,
+  "seed": 0,
+  "clear_checkpoints": true,
+  "candidate": false,
+  "test_only": false,
+  "data_path": "../data/",
+  "dataset": "ml-1m",
+  "embed_size": 64,
+  "batch_size": 256,
+  "lr": 0.001,
+  "regs": 0.0,
+  "epoch": 200,
+  "Ks": "3,5,10,20",
+  "verbose": 5,
+  "saveID": "fmtopk",
+  "patience": 10,
+  "checkpoint": "./",
+  "modeltype": "FMTopK",
+  "cuda": 0,
+  "IPStype": "context101",
+  "n_layers": 0,
+  "max2keep": 1,
+  "infonce": 0,
+  "neg_sample": 1,
+  "num_workers": 0,
+  "train_norm": false,
+  "pred_norm": false,
+  "nodrop": true,
+  "no_wandb": false,
+  
+
+  "include_item_features": true,
+  "include_situation_features": true,
+  "include_user_features": false,
+  
+
+  "context_features": {
+    "item": ["genre", "title"],
+    "situation": ["day", "hour", "period", "weekday"]
+  },
+  "feature_dims": {
+    "genre": 298,
+    "title": 3126,
+    "day": 1,
+    "hour": 24,
+    "period": 9,
+    "weekday": 7,
+    "user": 6033,
+    "item": 3126
+  }
+}

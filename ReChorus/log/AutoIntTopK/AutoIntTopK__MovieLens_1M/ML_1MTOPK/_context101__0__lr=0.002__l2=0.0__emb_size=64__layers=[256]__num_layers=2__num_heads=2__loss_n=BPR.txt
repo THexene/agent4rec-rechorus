@@ -1,0 +1,105 @@
+INFO:root:Namespace(model_name='AutoInt', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-24 17:05:33 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ attention_size             | 64                  
+ batch_size                 | 256                 
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0.0                 
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ l2                         | 0.0                 
+ layers                     | [256]               
+ loss_n                     | BPR                 
+ lr                         | 0.002               
+ main_metric                |                     
+ num_heads                  | 2                   
+ num_layers                 | 2                   
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ save_final_results         | 1                   
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+===================================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 985042
+INFO:root:AutoIntTopK(
+  (context_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (linear_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 1)
+    (i_title_c): Embedding(3126, 1)
+    (c_day_f): Linear(in_features=1, out_features=1, bias=False)
+    (c_hour_c): Embedding(24, 1)
+    (c_period_c): Embedding(9, 1)
+    (c_weekday_c): Embedding(7, 1)
+    (user_id): Embedding(6033, 1)
+    (item_id): Embedding(3126, 1)
+  )
+  (autoint_attentions): ModuleList(
+    (0-1): 2 x MultiHeadAttention(
+      (q_linear): Linear(in_features=64, out_features=64, bias=False)
+      (k_linear): Linear(in_features=64, out_features=64, bias=False)
+      (v_linear): Linear(in_features=64, out_features=64, bias=False)
+    )
+  )
+  (residual_embeddings): ModuleList(
+    (0-1): 2 x Linear(in_features=64, out_features=64, bias=True)
+  )
+  (deep_layers): MLP_Block(
+    (mlp): Sequential(
+      (0): Linear(in_features=512, out_features=256, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=256, out_features=1, bias=True)
+    )
+  )
+)
+INFO:root:Test Before Training: (HR@3:0.0306,NDCG@3:0.0213,HR@5:0.0435,NDCG@5:0.0266,HR@10:0.0912,NDCG@10:0.0416,HR@20:0.1907,NDCG@20:0.0665)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=0.3578 [26.1 s]	dev=(HR@3:0.2404,NDCG@3:0.1868) [0.3 s] *
+INFO:root:Epoch 2     loss=0.3394 [24.2 s]	dev=(HR@3:0.2428,NDCG@3:0.1840) [0.3 s]
+INFO:root:Epoch 3     loss=0.3341 [23.7 s]	dev=(HR@3:0.2510,NDCG@3:0.1918) [0.3 s] *
+INFO:root:Epoch 4     loss=0.3295 [24.2 s]	dev=(HR@3:0.2518,NDCG@3:0.1941) [0.3 s] *
+INFO:root:Epoch 5     loss=0.3284 [26.4 s]	dev=(HR@3:0.2459,NDCG@3:0.1907) [0.3 s]
+INFO:root:Epoch 6     loss=0.3263 [25.0 s]	dev=(HR@3:0.2459,NDCG@3:0.1880) [0.3 s]
+INFO:root:Epoch 7     loss=0.3266 [25.0 s]	dev=(HR@3:0.2537,NDCG@3:0.1929) [0.3 s]
+INFO:root:Epoch 8     loss=0.3292 [25.3 s]	dev=(HR@3:0.2502,NDCG@3:0.1901) [0.3 s]
+INFO:root:Epoch 9     loss=0.3314 [25.4 s]	dev=(HR@3:0.2451,NDCG@3:0.1844) [0.3 s]
+INFO:root:Epoch 10    loss=0.3271 [25.1 s]	dev=(HR@3:0.1862,NDCG@3:0.1425) [0.3 s]
+INFO:root:Epoch 11    loss=0.3229 [24.5 s]	dev=(HR@3:0.2490,NDCG@3:0.1898) [0.3 s]
+INFO:root:Epoch 12    loss=0.3202 [23.4 s]	dev=(HR@3:0.2330,NDCG@3:0.1785) [0.3 s]
+INFO:root:Epoch 13    loss=0.3155 [23.6 s]	dev=(HR@3:0.2467,NDCG@3:0.1880) [0.3 s]
+INFO:root:Early stop at 13 based on dev result.
+INFO:root:
+Best Iter(dev)=    4	 dev=(HR@3:0.2518,NDCG@3:0.1941) [325.9 s] 
+INFO:root:Load model from ../model/AutoIntTopK/AutoIntTopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.002__l2=0.0__emb_size=64__layers=[256]__num_layers=2__num_heads=2__loss_n=BPR.pt
+INFO:root:
+Dev  After Training: (HR@3:0.2518,NDCG@3:0.1941,HR@5:0.3392,NDCG@5:0.2300,HR@10:0.5012,NDCG@10:0.2818,HR@20:0.6881,NDCG@20:0.3292)
+INFO:root:
+Test After Training: (HR@3:0.2380,NDCG@3:0.1854,HR@5:0.3302,NDCG@5:0.2232,HR@10:0.4899,NDCG@10:0.2746,HR@20:0.6848,NDCG@20:0.3239)
+INFO:root:Saving top-100 recommendation results to: ../log/AutoIntTopK/AutoIntTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-AutoIntTopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/AutoIntTopK/AutoIntTopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-AutoIntTopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-24 17:11:02 ---------------------------------------------

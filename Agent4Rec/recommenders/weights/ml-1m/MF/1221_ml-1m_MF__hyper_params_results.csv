@@ -1,0 +1,2 @@
+notation,train_pred_mode,best_epoch,max_epoch,Ks,n_layers,batch_size,neg_sample,lr,valid_recall,valid_ndcg,valid_hit_ratio,test_recall,test_ndcg,test_hit_ratio
+1221_,t0p0,84,2000,20,0,2048,1,0.0005,0.1491,0.3553,0.9520,0.1506,0.3561,0.9690

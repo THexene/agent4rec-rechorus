@@ -1,0 +1,120 @@
+INFO:root:Namespace(model_name='DCNv2', model_mode='TopK')
+INFO:root:--------------------------------------------- BEGIN: 2024-12-24 18:02:22 ---------------------------------------------
+INFO:root:
+===================================================
+ Arguments                  | Values               
+===================================================
+ batch_size                 | 256                 
+ cross_layer_num            | 2                   
+ data_appendix              | _context101         
+ dataset                    | MovieLens_1M/ML_1...
+ dropout                    | 0.0                 
+ early_stop                 | 10                  
+ emb_size                   | 64                  
+ epoch                      | 200                 
+ eval_batch_size            | 128                 
+ expert_num                 | 2                   
+ gpu                        | 0                   
+ include_item_features      | 1                   
+ include_situation_features | 1                   
+ include_user_features      | 0                   
+ l2                         | 0.0001              
+ layers                     | [256,64]            
+ loss_n                     | BPR                 
+ low_rank                   | 64                  
+ lr                         | 0.001               
+ main_metric                |                     
+ mixed                      | 0                   
+ num_neg                    | 1                   
+ num_workers                | 0                   
+ optimizer                  | Adam                
+ random_seed                | 0                   
+ reg_weight                 | 2.0                 
+ save_final_results         | 1                   
+ structure                  | stacked             
+ test_all                   | 0                   
+ topk                       | 3,5,10,20           
+===================================================
+INFO:root:Device: cuda
+INFO:root:Load corpus from ../data/MovieLens_1M/ML_1MTOPK/ContextReader_context101.pkl
+INFO:root:#params: 1481729
+INFO:root:DCNv2TopK(
+  (context_embedding): ModuleDict(
+    (i_genre_c): Embedding(298, 64)
+    (i_title_c): Embedding(3126, 64)
+    (c_day_f): Linear(in_features=1, out_features=64, bias=False)
+    (c_hour_c): Embedding(24, 64)
+    (c_period_c): Embedding(9, 64)
+    (c_weekday_c): Embedding(7, 64)
+    (user_id): Embedding(6033, 64)
+    (item_id): Embedding(3126, 64)
+  )
+  (cross_layer_w2): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 512x512 (cuda:0)]
+      (1): Parameter containing: [torch.float32 of size 512x512 (cuda:0)]
+  )
+  (bias): ParameterList(
+      (0): Parameter containing: [torch.float32 of size 512x1 (cuda:0)]
+      (1): Parameter containing: [torch.float32 of size 512x1 (cuda:0)]
+  )
+  (tanh): Tanh()
+  (deep_layers): MLP_Block(
+    (mlp): Sequential(
+      (0): Linear(in_features=512, out_features=256, bias=True)
+      (1): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Linear(in_features=256, out_features=64, bias=True)
+      (4): BatchNorm1d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+    )
+  )
+  (predict_layer): Linear(in_features=64, out_features=1, bias=True)
+)
+INFO:root:Test Before Training: (HR@3:0.0327,NDCG@3:0.0242,HR@5:0.0515,NDCG@5:0.0319,HR@10:0.1082,NDCG@10:0.0500,HR@20:0.2133,NDCG@20:0.0765)
+INFO:root:Optimizer: Adam
+INFO:root:Epoch 1     loss=806.9062 [18.0 s]	dev=(HR@3:0.2404,NDCG@3:0.1839) [0.2 s] *
+INFO:root:Epoch 2     loss=6.5564 [17.3 s]	dev=(HR@3:0.2514,NDCG@3:0.1914) [0.2 s] *
+INFO:root:Epoch 3     loss=0.3835 [18.5 s]	dev=(HR@3:0.2568,NDCG@3:0.1975) [0.2 s] *
+INFO:root:Epoch 4     loss=0.3349 [19.7 s]	dev=(HR@3:0.2580,NDCG@3:0.2006) [0.2 s] *
+INFO:root:Epoch 5     loss=0.3138 [17.8 s]	dev=(HR@3:0.2795,NDCG@3:0.2129) [0.2 s] *
+INFO:root:Epoch 6     loss=0.3044 [18.2 s]	dev=(HR@3:0.2377,NDCG@3:0.1820) [0.2 s]
+INFO:root:Epoch 7     loss=0.2972 [19.3 s]	dev=(HR@3:0.2845,NDCG@3:0.2192) [0.2 s] *
+INFO:root:Epoch 8     loss=0.2919 [19.6 s]	dev=(HR@3:0.2717,NDCG@3:0.2082) [0.2 s]
+INFO:root:Epoch 9     loss=0.2875 [19.2 s]	dev=(HR@3:0.2553,NDCG@3:0.1926) [0.2 s]
+INFO:root:Epoch 10    loss=0.2858 [19.7 s]	dev=(HR@3:0.2861,NDCG@3:0.2187) [0.2 s]
+INFO:root:Epoch 11    loss=0.2805 [19.4 s]	dev=(HR@3:0.2771,NDCG@3:0.2137) [0.2 s]
+INFO:root:Epoch 12    loss=0.2796 [20.0 s]	dev=(HR@3:0.2760,NDCG@3:0.2146) [0.2 s]
+INFO:root:Epoch 13    loss=0.2743 [18.6 s]	dev=(HR@3:0.2802,NDCG@3:0.2179) [0.2 s]
+INFO:root:Epoch 14    loss=0.2718 [19.1 s]	dev=(HR@3:0.2845,NDCG@3:0.2182) [0.2 s]
+INFO:root:Epoch 15    loss=0.2703 [20.1 s]	dev=(HR@3:0.2845,NDCG@3:0.2208) [0.2 s] *
+INFO:root:Epoch 16    loss=0.2682 [20.1 s]	dev=(HR@3:0.2998,NDCG@3:0.2304) [0.2 s] *
+INFO:root:Epoch 17    loss=0.2667 [18.9 s]	dev=(HR@3:0.2955,NDCG@3:0.2268) [0.2 s]
+INFO:root:Epoch 18    loss=0.2658 [18.0 s]	dev=(HR@3:0.2814,NDCG@3:0.2201) [0.2 s]
+INFO:root:Epoch 19    loss=0.2650 [19.5 s]	dev=(HR@3:0.3009,NDCG@3:0.2331) [0.2 s] *
+INFO:root:Epoch 20    loss=0.2633 [19.5 s]	dev=(HR@3:0.3060,NDCG@3:0.2347) [0.2 s] *
+INFO:root:Epoch 21    loss=0.2612 [19.6 s]	dev=(HR@3:0.3005,NDCG@3:0.2304) [0.2 s]
+INFO:root:Epoch 22    loss=0.2610 [19.8 s]	dev=(HR@3:0.2900,NDCG@3:0.2254) [0.2 s]
+INFO:root:Epoch 23    loss=0.2642 [19.5 s]	dev=(HR@3:0.3009,NDCG@3:0.2373) [0.2 s] *
+INFO:root:Epoch 24    loss=0.2582 [19.1 s]	dev=(HR@3:0.2822,NDCG@3:0.2185) [0.2 s]
+INFO:root:Epoch 25    loss=0.2591 [18.3 s]	dev=(HR@3:0.2299,NDCG@3:0.1805) [0.2 s]
+INFO:root:Epoch 26    loss=0.2560 [18.4 s]	dev=(HR@3:0.2865,NDCG@3:0.2200) [0.2 s]
+INFO:root:Epoch 27    loss=0.2556 [20.2 s]	dev=(HR@3:0.2966,NDCG@3:0.2248) [0.2 s]
+INFO:root:Epoch 28    loss=0.2586 [20.1 s]	dev=(HR@3:0.2873,NDCG@3:0.2183) [0.2 s]
+INFO:root:Epoch 29    loss=0.2584 [19.5 s]	dev=(HR@3:0.2966,NDCG@3:0.2275) [0.2 s]
+INFO:root:Epoch 30    loss=0.2565 [17.9 s]	dev=(HR@3:0.2857,NDCG@3:0.2175) [0.2 s]
+INFO:root:Epoch 31    loss=0.2574 [19.0 s]	dev=(HR@3:0.2939,NDCG@3:0.2208) [0.2 s]
+INFO:root:Epoch 32    loss=0.2560 [19.6 s]	dev=(HR@3:0.2974,NDCG@3:0.2264) [0.2 s]
+INFO:root:Early stop at 32 based on dev result.
+INFO:root:
+Best Iter(dev)=   23	 dev=(HR@3:0.3009,NDCG@3:0.2373) [617.6 s] 
+INFO:root:Load model from ../model/DCNv2TopK/DCNv2TopK__MovieLens_1M/ML_1MTOPK/_context101__0__lr=0.001__l2=0.0001__emb_size=64__loss_n=BPR__cross_layer_num=2.pt
+INFO:root:
+Dev  After Training: (HR@3:0.3009,NDCG@3:0.2373,HR@5:0.4063,NDCG@5:0.2805,HR@10:0.5827,NDCG@10:0.3375,HR@20:0.7607,NDCG@20:0.3823)
+INFO:root:
+Test After Training: (HR@3:0.2860,NDCG@3:0.2258,HR@5:0.3907,NDCG@5:0.2684,HR@10:0.5564,NDCG@10:0.3220,HR@20:0.7568,NDCG@20:0.3728)
+INFO:root:Saving top-100 recommendation results to: ../log/DCNv2TopK/DCNv2TopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-DCNv2TopK-dev.csv
+INFO:root:dev Prediction results saved!
+INFO:root:Saving top-100 recommendation results to: ../log/DCNv2TopK/DCNv2TopK__MovieLens_1M/ML_1MTOPK\_context101__0__lr=0\rec-DCNv2TopK-test.csv
+INFO:root:test Prediction results saved!
+INFO:root:
+--------------------------------------------- END: 2024-12-24 18:12:43 ---------------------------------------------
